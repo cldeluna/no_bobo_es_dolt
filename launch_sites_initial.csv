@@ -1,0 +1,14 @@
+common_name,lat,lon,country,mgmt_org,site_type,status,notes
+Kennedy Space Center LC-39A,28.608389,-80.604333,United States,NASA / SpaceX,Orbital,Active,Historic Apollo and Shuttle pad now used by SpaceX Falcon 9/Heavy
+Baikonur Cosmodrome,45.920000,63.342000,Kazakhstan,Roscosmos,Orbital,Active,Oldest and largest operational launch site in the world
+Vandenberg SFB SLC-4E,34.632000,-120.611000,United States,SpaceX,Orbital,Active,West coast polar orbit launch pad
+Guiana Space Centre (Kourou),5.236000,-52.769000,French Guiana,ESA / ArianeGroup,Orbital,Active,Primary ESA launch site near the equator
+Jiuquan Satellite Launch Center,40.960000,100.291000,China,CASC / CNSA,Orbital,Active,China's first and oldest space launch center
+Satish Dhawan Space Centre,13.733000,80.235000,India,ISRO,Orbital,Active,Primary Indian space launch facility on Sriharikota island
+Tanegashima Space Center,30.400000,130.970000,Japan,JAXA,Orbital,Active,Japan's largest rocket launch complex
+Mahia Peninsula Launch Complex,-39.260000,177.864000,New Zealand,Rocket Lab,Orbital,Active,Rocket Lab's private orbital launch site
+SpaceX Starbase (Boca Chica),25.997000,-97.155000,United States,SpaceX,Orbital,Active,Starship development and launch facility
+Plesetsk Cosmodrome,62.925000,40.577000,Russia,Russian Ministry of Defence,Orbital,Active,Russia's primary military launch site
+Wenchang Space Launch Site,19.615000,110.951000,China,CASC / CNSA,Orbital,Active,China's newest and most modern launch center
+Palmachim Airbase,31.894000,34.690000,Israel,IAI / Israeli MoD,Orbital,Active,Israeli launch site launches westward over Mediterranean
+Cape Canaveral SFS SLC-41,28.583000,-80.583000,United States,ULA,Orbital,Active,Atlas V and Vulcan launch pad

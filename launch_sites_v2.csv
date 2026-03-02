@@ -1,0 +1,11 @@
+common_name,lat,lon,country,mgmt_org,site_type,status,notes,_action
+Baikonur Cosmodrome,45.920000,63.342000,Kazakhstan,Roscosmos,Orbital,Inactive,Transitioning to Vostochny — crewed launches moved by 2025,UPDATE
+SpaceX Starbase (Boca Chica),25.997000,-97.155000,United States,SpaceX,Orbital,Active,Starship fully operational — first commercial flights commenced,UPDATE
+Plesetsk Cosmodrome,62.925000,40.577000,Russia,Russian MoD / VKS,Orbital,Active,Russia's primary military launch site — Angara-A5 now operational,UPDATE
+Jiuquan Satellite Launch Center,40.960000,100.291000,China,CASC / CNSA,Orbital,Active,China's first launch center — now also supports commercial operators,UPDATE
+Vostochny Cosmodrome,51.884000,128.333000,Russia,Roscosmos,Orbital,Active,Russia's new civilian spaceport replacing Baikonur for crewed missions,INSERT
+Naro Space Center,34.432000,127.535000,South Korea,KARI,Orbital,Active,South Korea's first orbital launch facility — KSLV-II Nuri rocket,INSERT
+Alcantara Launch Center,-2.370000,-44.396000,Brazil,AEB,Orbital,Active,Near-equatorial Brazilian launch site — advantageous for GTO missions,INSERT
+Esrange Space Center,67.893000,21.083000,Sweden,SSC,Suborbital,Active,Europe's northernmost rocket range — sounding rockets and stratospheric balloons,INSERT
+Mohammed Bin Rashid Space Centre,25.117000,55.327000,United Arab Emirates,MBRSC,Orbital,Under Construction,UAE's planned orbital launch facility targeting first launch 2027,INSERT
+Vandenberg SFB SLC-6,34.580000,-120.626000,United States,ULA,Orbital,Inactive,Former Titan IV and Space Shuttle pad — decommissioned and under evaluation,INSERT

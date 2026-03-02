@@ -1,0 +1,27 @@
+# ============================================================
+# Dolt SQL Server Configuration
+# Simple No-Encryption Setup
+# Tested with Dolt v1.83.0
+# ============================================================
+
+log_level: info
+
+behavior:
+  read_only: false
+  autocommit: true
+
+listener:
+  host: "0.0.0.0"          # Listen on all interfaces for remote access
+  port: 3306                # Default MySQL port — change if needed (e.g., 3307)
+  max_connections: 10
+  read_timeout_millis: 300000
+  write_timeout_millis: 300000
+  tls_key: ""               # No TLS key — plaintext mode
+  tls_cert: ""              # No TLS cert — plaintext mode
+  require_secure_transport: false # TLS not required - LAB Only!
+
+performance:
+  query_parallelism: 0
+
+data_dir: "."               # Use current directory as the data root
+

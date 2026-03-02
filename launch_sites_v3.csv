@@ -1,0 +1,21 @@
+common_name,lat,lon,country,mgmt_org,site_type,status,notes,_action
+Kennedy Space Center LC-39A,28.608389,-80.604333,United States,National Aeronautics and Space Administration / SpaceX,Orbital,Active,Historic Apollo and Shuttle pad now used by SpaceX Falcon 9/Heavy,UPDATE
+Guiana Space Centre (Kourou),5.236000,-52.769000,French Guiana,European Space Agency / ArianeGroup,Orbital,Active,Primary European Space Agency launch site near the equator,UPDATE
+Jiuquan Satellite Launch Center,40.960000,100.291000,China,China Aerospace Science and Technology Corporation / China National Space Administration,Orbital,Active,China's first launch center — now also supports commercial operators,UPDATE
+Satish Dhawan Space Centre,13.733000,80.235000,India,Indian Space Research Organisation,Orbital,Active,Primary Indian space launch facility on Sriharikota island,UPDATE
+Tanegashima Space Center,30.400000,130.970000,Japan,Japan Aerospace Exploration Agency,Orbital,Active,Japan's largest rocket launch complex,UPDATE
+Wenchang Space Launch Site,19.615000,110.951000,China,China Aerospace Science and Technology Corporation / China National Space Administration,Orbital,Active,China's newest and most modern launch center,UPDATE
+Palmachim Airbase,31.894000,34.690000,Israel,Israel Aerospace Industries / Israeli Ministry of Defense,Orbital,Active,Israeli launch site launches westward over Mediterranean,UPDATE
+Cape Canaveral SFS SLC-41,28.583000,-80.583000,United States,United Launch Alliance,Orbital,Active,Atlas V and Vulcan launch pad,UPDATE
+Plesetsk Cosmodrome,62.925000,40.577000,Russia,Russian Ministry of Defence / Vozdushno-Kosmicheskiye Sily,Orbital,Active,Russia's primary military launch site — Angara-A5 now operational,UPDATE
+Naro Space Center,34.432000,127.535000,South Korea,Korea Aerospace Research Institute,Orbital,Active,South Korea's first orbital launch facility — KSLV-II Nuri rocket,UPDATE
+Alcantara Launch Center,-2.370000,-44.396000,Brazil,Agência Espacial Brasileira,Orbital,Active,Near-equatorial Brazilian launch site — advantageous for geostationary transfer orbit missions,UPDATE
+Esrange Space Center,67.893000,21.083000,Sweden,Swedish Space Corporation,Suborbital,Active,Europe's northernmost rocket range — sounding rockets and stratospheric balloons,UPDATE
+Mohammed Bin Rashid Space Centre,25.117000,55.327000,United Arab Emirates,Mohammed Bin Rashid Space Centre,Orbital,Under Construction,UAE's planned orbital launch facility targeting first launch 2027,UPDATE
+Vandenberg SFB SLC-6,34.580000,-120.626000,United States,United Launch Alliance,Orbital,Inactive,Former Titan IV and Space Shuttle pad — decommissioned and under evaluation,UPDATE
+Vostochny Cosmodrome,51.884000,128.333000,Russia,Roscosmos State Corporation for Space Activities,Orbital,Active,Russia's new civilian spaceport replacing Baikonur for crewed missions,UPDATE
+Vandenberg SFB SLC-4W,34.636000,-120.613000,United States,SpaceX,Orbital,Inactive,Former Titan launch pad adjacent to SLC-4E — decommissioned,INSERT
+Uchinoura Space Center,31.251000,131.082000,Japan,Japan Aerospace Exploration Agency,Orbital,Active,Japan's original orbital launch site — now used for small scientific satellites and sounding rockets,INSERT
+Broglio Space Center (San Marco),2.935000,40.214000,Kenya,Agenzia Spaziale Italiana,Orbital,Inactive,World's first equatorial offshore launch platform — decommissioned 1988 Italian-operated,INSERT
+Dombarovsky (Yasny),51.057000,59.852000,Russia,Russian Aerospace Forces,Orbital,Active,Former ICBM base converted to commercial launch site — Dnepr and Rokot rockets,INSERT
+Kodiak Launch Complex,57.436000,-152.338000,United States,Alaska Aerospace Corporation,Orbital,Active,High-latitude US launch site supporting polar and sun-synchronous orbits,INSERT
