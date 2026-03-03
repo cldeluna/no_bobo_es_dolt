@@ -137,13 +137,39 @@ def get_active_branch(cursor):
     return row[0] if row else "unknown"
 
 
-def check_and_set_branch(cursor, branch):
+def branch_exists(cursor, branch):
+    """Return True if the given branch name exists in dolt_branches."""
+    cursor.execute("SELECT COUNT(*) FROM dolt_branches WHERE name = %s;", (branch,))
+    row = cursor.fetchone()
+    try:
+        cursor.fetchall()
+    except Exception:
+        pass
+    return bool(row and row[0])
+
+
+def check_and_set_branch(cursor, branch, create_if_missing=False):
     """Ensure we are on the correct branch, checking out if necessary."""
     current = get_active_branch(cursor)
     print(f"  Active branch : '{current}'")
     if current == branch:
         print(f"  Target branch : '{branch}' ✓  (no checkout needed)\n")
         return
+
+    if not branch_exists(cursor, branch):
+        if create_if_missing:
+            print(f"  Branch '{branch}' does not exist — creating it ...")
+            run(cursor, "CALL dolt_checkout('-b', %s);", params=(branch,),
+                label=f"dolt_checkout('-b', '{branch}')")
+        else:
+            print(f"  ERROR: Branch '{branch}' does not exist.")
+            print("         Dolt interpreted it as a table checkout and failed.")
+            print("         To create it, run one of:")
+            print(f"           CALL dolt_branch('{branch}');")
+            print(f"           CALL dolt_checkout('-b', '{branch}');")
+            print("         Or rerun this script with --create-branch")
+            sys.exit(1)
+
     print(f"  Switching to  : '{branch}' ...")
     run(cursor, CHECKOUT_SQL, params=(branch,),
         label=f"dolt_checkout('{branch}')")
@@ -274,7 +300,7 @@ def mode_load(args, cursor):
     run(cursor, USE_DB_SQL,       label="USE launch_sites")
     run(cursor, CREATE_TABLE_SQL, label="CREATE TABLE IF NOT EXISTS sites")
     print(f"\n  Verifying branch '{args.branch}' ...")
-    check_and_set_branch(cursor, args.branch)
+    check_and_set_branch(cursor, args.branch, create_if_missing=args.create_branch)
 
     # 3. Apply UPDATEs
     if updates:
@@ -369,7 +395,7 @@ def mode_restore(args, cursor):
 
     run(cursor, USE_DB_SQL, label="USE launch_sites")
     print(f"\n  Verifying branch '{args.branch}' ...")
-    check_and_set_branch(cursor, args.branch)
+    check_and_set_branch(cursor, args.branch, create_if_missing=args.create_branch)
 
     # Step 1: Clean state before the accident
     section("STEP 1: Current State Before the Accident")
@@ -635,6 +661,8 @@ if __name__ == '__main__':
                         help="Path to CSV file (default: launch_sites_initial.csv)")
     parser.add_argument("--branch",      default="main",
                         help="Dolt branch to operate on (default: main)")
+    parser.add_argument("--create-branch", action="store_true",
+                        help="Create --branch if it does not exist")
     parser.add_argument("--message",     default=None,
                         help="Override the auto-generated commit message")
     parser.add_argument("--mode",        default="load",
