@@ -372,7 +372,7 @@ def mode_load(args, cursor):
     print("    SELECT commit_hash, message, date FROM dolt_log;")
     print("    SELECT diff_type, COALESCE(to_common_name, from_common_name),")
     print("           from_status, to_status FROM dolt_diff_sites")
-    print("    WHERE  from_commit = 'HEAD~1' AND to_commit = 'HEAD';")
+    print("    WHERE  from_commit = hashof('HEAD~1') AND to_commit = hashof('HEAD');")
 
 
 # ── Mode: restore ─────────────────────────────────────────────────────────────
@@ -501,6 +501,51 @@ def mode_restore(args, cursor):
     print()
     print("    SELECT * FROM dolt_log;")
     print("      └─ View full commit history with hashes")
+
+
+# ── Mode: zap ─────────────────────────────────────────────────────────────────
+
+def mode_zap(args, cursor):
+    """Drop and recreate the `launch_sites` database.
+
+    This is a destructive operation intended to completely reset the project
+    state.
+
+    What it deletes (in `launch_sites`):
+      - All table data (e.g., `launch_sites.sites`)
+      - All Dolt history for that database (commits / branches / tags)
+
+    What it does NOT delete:
+      - Server users / grants (e.g., `dbadmin` in `mysql.user`)
+      - Other databases on the server
+
+    Safety:
+      - By default the user must type the exact string `ZAP` to proceed.
+      - `--force` skips the interactive confirmation (use with care).
+    """
+    section("ZAP — Delete launch_sites Database (Data + Dolt History)")
+    print("  This will permanently remove:")
+    print("    - All rows in launch_sites.sites")
+    print("    - All commits / branches / tags for the launch_sites database")
+    print()
+
+    if not args.force:
+        confirm = input("  Type ZAP to continue: ").strip()
+        if confirm != "ZAP":
+            print("\n  Aborted — no changes made.")
+            return
+
+    run(cursor, "DROP DATABASE IF EXISTS launch_sites;",
+        label="DROP DATABASE IF EXISTS launch_sites")
+    run(cursor, CREATE_DB_SQL, label="CREATE DATABASE IF NOT EXISTS launch_sites")
+    run(cursor, USE_DB_SQL, label="USE launch_sites")
+    run(cursor, CREATE_TABLE_SQL, label="CREATE TABLE IF NOT EXISTS sites")
+
+    section("ZAP Complete")
+    print("  Database launch_sites has been recreated with a fresh history.")
+    print("  Next steps:")
+    print("    SELECT active_branch();")
+    print("    SELECT * FROM dolt_log;")
 
 
 # ── Branch demo (shared) ──────────────────────────────────────────────────────
@@ -632,6 +677,9 @@ def main():
     cursor = conn.cursor()
 
     try:
+        if args.zap:
+            mode_zap(args, cursor)
+            return
         if args.mode == "load":
             mode_load(args, cursor)
         else:
@@ -663,6 +711,10 @@ if __name__ == '__main__':
                         help="Dolt branch to operate on (default: main)")
     parser.add_argument("--create-branch", action="store_true",
                         help="Create --branch if it does not exist")
+    parser.add_argument("--zap", action="store_true",
+                        help="DANGER: drop+recreate launch_sites DB (deletes all data and Dolt history)")
+    parser.add_argument("--force", action="store_true",
+                        help="Skip interactive confirmation for dangerous operations (use with --zap)")
     parser.add_argument("--message",     default=None,
                         help="Override the auto-generated commit message")
     parser.add_argument("--mode",        default="load",
