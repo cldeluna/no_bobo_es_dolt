@@ -566,46 +566,6 @@ sudo firewall-cmd --reload
 
 Since Dolt speaks MySQL protocol, you can use **any MySQL-compatible client**. Below are the best options for each platform.
 
----
-
-### DBeaver — Universal GUI Client (Recommended for Mac and Windows)
-
-DBeaver is a free, open-source database GUI that works on macOS, Windows, and Linux. It's the most capable and user-friendly option for most users.
-
-**Download:** https://dbeaver.io/download/
-
-#### macOS Installation
-
-1. Go to https://dbeaver.io/download/
-2. Download **DBeaver Community** → **Mac** → `.dmg` file
-3. Open the `.dmg`, drag DBeaver to your Applications folder
-4. Launch DBeaver from Applications
-5. On first launch, macOS may warn about an unverified developer — go to System Settings → Privacy & Security → click **Open Anyway**
-
-#### Windows Installation
-
-1. Go to https://dbeaver.io/download/
-2. Download **DBeaver Community** → **Windows** → `.exe` installer
-3. Run the installer and follow the prompts (accept defaults)
-4. Launch DBeaver from the Start Menu
-5. On first launch, DBeaver will prompt to install a Java runtime — click **Yes** and let it install automatically
-
-#### Linux Installation
-
-**Ubuntu/Debian:**
-```bash
-wget -O - https://dbeaver.io/debs/dbeaver.gpg.key | sudo apt-key add -
-echo "deb https://dbeaver.io/debs/dbeaver-ce /" | sudo tee /etc/apt/sources.list.d/dbeaver.list
-sudo apt update && sudo apt install dbeaver-ce -y
-```
-
-**Flatpak (any distro):**
-```bash
-flatpak install flathub io.dbeaver.DBeaverCommunity
-```
-
----
-
 ### MySQL Workbench — Official MySQL GUI Client
 
 A good alternative with a clean interface.
@@ -646,40 +606,9 @@ sudo yum install mysql -y
 
 ---
 
-### TablePlus — Polished GUI for Mac and Windows -- but not for Dolt
-
-A premium-feeling client with a free tier. Great for Mac users.
-
-**Download:** https://tableplus.com/
-
-- **macOS:** Available on the Mac App Store or directly from the website (`.dmg`)
-- **Windows:** Download the `.exe` from the website
-
----
-
 ## 9. Connecting Remotely from a Client
 
 Replace `SERVER_IP` with the actual IP address of your Dolt server.
-
-### Using DBeaver (Mac or Windows)
-
-1. Open DBeaver
-2. Click **New Database Connection** (the plug icon in the top-left, or Database menu → New Connection)
-3. Select **MySQL** from the list → click **Next**
-4. Fill in the connection details:
-
-| Field | Value |
-|---|---|
-| Server Host | `SERVER_IP` (e.g., `192.168.1.50`) |
-| Port | `3306` |
-| Database | *(leave blank for now)* |
-| Username | `dbadmin` |
-| Password | `SecurePass456!` |
-
-5. Click **Test Connection** — if it succeeds, you'll see a green checkmark
-6. Click **Finish**
-
-> **First time:** DBeaver may prompt to download the MySQL driver. Click **Download** and let it complete automatically.
 
 ### Using MySQL Workbench
 

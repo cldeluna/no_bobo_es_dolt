@@ -723,7 +723,10 @@ SELECT commit_hash, message, date FROM dolt_log;
 ## Branch Workflow
 
 ```sql
--- Create and switch to a new branch
+-- Selecte the Database to use for your actions
+USE launch_sites;
+
+-- Create (-b) and switch to a new branch
 CALL dolt_checkout('-b', 'abandoned');
 
 -- Show active branch
@@ -731,6 +734,9 @@ SELECT active_branch();
 
 -- Show branches (just the name)
 SELECT name FROM dolt_branches;
+
+-- Show the current DB
+SELECT common_name, country FROM sites;
 
 -- Make changes and commit on the branch
 # INSERT INTO sites (...) VALUES (...);
@@ -756,17 +762,42 @@ INSERT INTO sites (
     'Former French missile and sounding rocket test range near Hammaguir used for launches including the Diamant orbital rocket from 1947–1967; abandoned after French withdrawal from Algeria under the Évian Accords.'
 );
 
+-- Show the updated DB
+SELECT common_name, country FROM sites;
+
+-- Go back to the main branch and view the records...notice what is missing?
+CALL dolt_checkout('main');
+
+-- Lets go back to the new abandoned branch
+CALL dolt_checkout('abandoned');
+
+-- We are going to add (-A) and commit (-m) our chagnes
 CALL dolt_add('-A');
-CALL dolt_commit('-m', 'Add new abandoned sites feature branch');
+CALL dolt_commit('-m', 'Added abandoned Algeria site to branch');
 
 -- Switch back to main and merge
 CALL dolt_checkout('main');
+
+-- Without conflicts the dolt_merge will commit
 CALL dolt_merge('abandoned');
+
+-- With colflicts you will have clean up to do and you will likely have to commit manually
+-- You should not need these two commands with this workflow
 CALL dolt_add('-A');
 CALL dolt_commit('-m', 'Merge abandoned into main');
 
--- Clean up the branch
+-- Lets look at all the branches we have
+SELECT * FROM dolt_branches;
+
+-- Delte the abandoned branch since we have merged into main
 CALL dolt_branch('-d', 'abandoned');
+
+-- Lets look at all the branches we have
+SELECT * FROM dolt_branches;
+
+-- Look at the commits
+SELECT commit_hash, message, date FROM dolt_log;
+
 ```
 
 ---
