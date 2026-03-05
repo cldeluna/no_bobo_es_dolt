@@ -1,15 +1,18 @@
 
 # Setting up the Linux Dolt Client
 
+Installed [OrbStack](https://orbstack.dev/) on Mac.  This is a Mac only option. 
 
-Installed OrbStack on Mac.  This is a Mac only option. 
+<img src="images/OrbStackSite.jpg" alt="OrbStackSite" style="zoom:30%;" />
 
 ```
 brew update
 brew install --cask orbstack
 ```
 
-Using Orb GUI, created an ubuntu vm
+Using Orb GUI, created an ubuntu vm.
+
+![orb_ubuntu_client_2026-03-05_06-42-41](images/orb_ubuntu_client_2026-03-05_06-42-41.jpg)
 
 These steps install the MySQL 8 client on Ubuntu using the official MySQL APT repository.
 
@@ -17,8 +20,13 @@ They add the MySQL repo (essential for MySQL 8.x, as Ubuntu's default may offer 
 
 The `mysql-client=8.4*` install might fail if 8.4 isn't listed yet—run `sudo apt update` after reconfiguration if needed. For client-only (no server), skip any server packages; this script does that correctly.
 
-
+```
 ssh ubuntu@orb
+```
+
+![ssh2ubuntu_2026-03-05_06-44-03](images/ssh2ubuntu_2026-03-05_06-44-03.jpg)
+
+Install the tools and software we need.
 
 ```bash
 claudiadeluna@ubuntu:~$ 
