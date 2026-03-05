@@ -1,6 +1,8 @@
 
 # Setting up the Linux Dolt Client
 
+Video: [Linux client out take](https://vimeo.com/1170692593?fl=ml&fe=ec) (~5min)
+
 Installed [OrbStack](https://orbstack.dev/) on Mac.  This is a Mac only option. 
 
 <img src="images/OrbStackSite.jpg" alt="OrbStackSite" style="zoom:30%;" />
