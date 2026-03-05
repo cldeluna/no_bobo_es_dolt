@@ -1,17 +1,17 @@
 # Dolt Database TLS Configuration Guide
 
 **Environment:**
-- Dolt 1.82.4
+- Dolt 1.83.0+
 - OpenSSL 3.6.1
-- MySQL Client 8.4.8 (Homebrew, macOS arm64)
-- macOS 15.2
+- MySQL Client 8.0+ (Homebrew, macOS arm64)
+- macOS 15.7
 - Database Hosted on Mac M1
 
 ---
 
 ## Architecture: Centralized Certificate Storage
 
-Store TLS certs centrally — not per-database. One cert covers all dolt databases on the machine. Each database's `config.yaml` simply references the central cert path by absolute path.
+Store TLS certs centrally on the dolt database server, not per-database. One cert covers all dolt databases on the machine. Each database's `config.yaml` simply references the central cert path by absolute path.
 
 In this example we will put the central dolt cert repository in our home directory (~) in a hidden directory `.dolt`.
 
@@ -184,9 +184,6 @@ behavior:
   read_only: false
   autocommit: true
 
-user:
-  name: root
-
 listener:
   host: 0.0.0.0
   port: 3306
@@ -217,8 +214,7 @@ dolt sql-server --config .dolt/config.yaml
 
 ### From the command line (full cert chain verification):
 ```bash
-openssl s_client -connect 127.0.0.1:3306 -starttls mysql \
-  -CAfile /Users/claudia/.dolt/certs/ca-cert.pem | grep -E "Verify|Cipher|Protocol"
+openssl s_client -connect 127.0.0.1:3306 -starttls mysql -CAfile /Users/claudia/.dolt/certs/ca-cert.pem | grep -E "Verify|Cipher|Protocol"
 ```
 Expected:
 ```
@@ -278,12 +274,19 @@ listener:
 
 The only file clients need is `ca-cert.pem`. **Never share `ca-key.pem` or `server-key.pem`.**
 
-Copy to remote client:
+Copy from server to remote client:
 ```bash
-scp ~/.dolt/certs/ca-cert.pem user@remotemachine:~/
+dolt_server$ scp ~/.dolt/certs/ca-cert.pem user@remotemachine:~/
+```
+
+Copy cert from remote client:
+
+```bash
+remote_client$ scp claudia@10.1.10.21:/Users/claudia/.dolt/certs/ca-cert.pem ~/
 ```
 
 Connect from remote client:
+
 ```bash
 mysql -h mac-minim1.local -P 3306 -u admin -p \
   --ssl-ca ~/ca-cert.pem \
