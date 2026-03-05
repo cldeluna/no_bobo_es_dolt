@@ -272,6 +272,36 @@ You should see something like: `dolt version 1.83.0`
 
 > This guide is tested and validated against **dolt version 1.83.0**. If your version differs significantly, some config field names or SQL procedure signatures may vary slightly.
 
+### Initial Dolt Setup (Commit Author Identity)
+
+Like Git, Dolt records an **author** on every commit. If you do not configure it, commits may fail or may use an identity you didn’t intend.
+
+Set these values once per machine (recommended) using `--global`:
+
+```bash
+dolt config --global --add user.name "Your Name"
+dolt config --global --add user.email "you@example.com"
+```
+
+Or, if you want the identity to apply only to a single Dolt database directory (repo-local), run the same commands **without** `--global` from inside the database directory (the folder that contains `.dolt/`).
+
+Verify what Dolt is configured to use:
+
+```bash
+# Show all config values (including user.name / user.email)
+dolt config --global --list
+
+# If you're inside a database directory, this also shows repo-local overrides
+dolt config --list
+```
+
+Confirm the author recorded on a commit:
+
+```bash
+# After you make your first commit, the log will show the commit author
+dolt log -n 1
+```
+
 ### Create a Dedicated Directory for Your Data
 
 Dolt is designed to have a **parent directory** that acts as a container, under which each Dolt database instance lives in its own subdirectory. This makes it easy to run multiple independent databases on the same server.
