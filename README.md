@@ -1,6 +1,7 @@
- # no_bobo_es_dolt
+ # Don't be a bobo! be a Dolt!
 
- This is the companion repository for the **“No Boboso es DOLT”** post.
+Companion Repository (no_bobo_es_dolt) for [The Gratuitous Arp Don't be a Bobo, be a Dolt](https://gratuitous-arp.net/no-bobo-es-dolt-git-version-control-mysql-database/)
+
 
  It includes:
  - `dolt_manage.py` and helper scripts for managing a Dolt SQL database
@@ -26,10 +27,10 @@
 
 - **Dolt SQL CLI and a Branch Workflow**
 
-​	Follow: [`DOLT_DB_PYWORKFLOW.md`](DOLT_DB_PYWORKFLOW.md)
+	Follow: [`DOLT_DB_PYWORKFLOW.md`](DOLT_DB_PYWORKFLOW.md)
 
-​	Video: [A short trip down a branch](https://vimeo.com/1170444295?fl=ml&fe=ec) (~6min)
-​	This video walks you through the branch/merge workflow.
+	Video: [A short trip down a branch](https://vimeo.com/1170444295?fl=ml&fe=ec) (~6min)
+	This video walks you through the branch/merge workflow.
 
 Supporting Material
 
