@@ -51,7 +51,7 @@ Launches:
 
 ![image-20260222145657422](images/image-20260222145657422.png)
 
-For a Network Engineer, there is nothing more important that the data, so being comfortable organizing data is an invaluable skill (and I don't mean organizing data in the "Word in Excel" way).
+For a Network Engineer, there is nothing more important than the data, so being comfortable organizing data is an invaluable skill (and I don't mean organizing data in the "Word in Excel" way).
 
 So while it is not at all a surprise that my first post this year is around data (almost all my posts are ultimately about data) it is surprising that this one involves SQL.  
 
@@ -117,6 +117,8 @@ https://github.com/cldeluna/no_bobo_es_dolt
    This guide walks you through generating certificates and configuring Dolt to require secure transport.
 
    
+   
+   Tip: The repository uses [uv](https://docs.astral.sh/uv/ "uv") and if you want to learn a bit more I hope [Ultra Valuable uv for Dynamic, On-Demand Python Virtual Environments](https://gratuitous-arp.net/dynamic-on-demand-python-venv-or-virtual-environments/ "Ultra Valuable uv for Dynamic, On-Demand Python Virtual Environments") helps.
 
 ## Final Thoughts
 
